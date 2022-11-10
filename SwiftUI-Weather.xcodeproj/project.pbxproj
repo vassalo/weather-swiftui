@@ -11,6 +11,9 @@
 		65D99703291A9BC400ED0EAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D99702291A9BC400ED0EAC /* ContentView.swift */; };
 		65D99705291A9BC500ED0EAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65D99704291A9BC500ED0EAC /* Assets.xcassets */; };
 		65D99708291A9BC500ED0EAC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65D99707291A9BC500ED0EAC /* Preview Assets.xcassets */; };
+		65D9970F291AD27200ED0EAC /* WeatherButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D9970E291AD27200ED0EAC /* WeatherButton.swift */; };
+		65D99711291BD17600ED0EAC /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D99710291BD17600ED0EAC /* Network.swift */; };
+		65EA0D90291D4CE200D12631 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA0D8F291D4CE200D12631 /* LocationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,9 @@
 		65D99702291A9BC400ED0EAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		65D99704291A9BC500ED0EAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65D99707291A9BC500ED0EAC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		65D9970E291AD27200ED0EAC /* WeatherButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherButton.swift; sourceTree = "<group>"; };
+		65D99710291BD17600ED0EAC /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		65EA0D8F291D4CE200D12631 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +59,9 @@
 			children = (
 				65D99700291A9BC400ED0EAC /* SwiftUI_WeatherApp.swift */,
 				65D99702291A9BC400ED0EAC /* ContentView.swift */,
+				65D9970E291AD27200ED0EAC /* WeatherButton.swift */,
+				65D99710291BD17600ED0EAC /* Network.swift */,
+				65EA0D8F291D4CE200D12631 /* LocationViewModel.swift */,
 				65D99704291A9BC500ED0EAC /* Assets.xcassets */,
 				65D99706291A9BC500ED0EAC /* Preview Content */,
 			);
@@ -138,7 +147,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				65D99703291A9BC400ED0EAC /* ContentView.swift in Sources */,
+				65EA0D90291D4CE200D12631 /* LocationViewModel.swift in Sources */,
 				65D99701291A9BC400ED0EAC /* SwiftUI_WeatherApp.swift in Sources */,
+				65D99711291BD17600ED0EAC /* Network.swift in Sources */,
+				65D9970F291AD27200ED0EAC /* WeatherButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +282,7 @@
 				DEVELOPMENT_TEAM = 5HHZ3SGM3Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Access your location to get weather info";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +312,7 @@
 				DEVELOPMENT_TEAM = 5HHZ3SGM3Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Access your location to get weather info";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
