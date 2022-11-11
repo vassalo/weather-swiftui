@@ -12,6 +12,7 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var lastSeenLocation: CLLocation?
     @Published var currentPlacemark: CLPlacemark?
     
+    private var locationChangeListeners: [() -> Void] = []
     private let locationManager: CLLocationManager
     
     override init() {
@@ -22,6 +23,10 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
+    }
+    
+    func registerLocationChangeListener(callback: @escaping () -> Void) {
+        locationChangeListeners.append(callback)
     }
     
     func requestPermission() {
@@ -35,7 +40,12 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         lastSeenLocation = locations.first
         fetchCountryAndCity(for: locations.first)
-        print(">>>")
+        for callback in locationChangeListeners {
+            callback()
+        }
+        for callback in locationChangeListeners {
+            callback()
+        }
     }
 
     func fetchCountryAndCity(for location: CLLocation?) {

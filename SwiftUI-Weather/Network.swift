@@ -47,7 +47,6 @@ struct DailyWeatherData: Decodable {
     var daily: DailyData
     
     struct DailyData: Decodable  {
-        let time: [String]
         let temperature_2m_max: [Float]
     }
 }

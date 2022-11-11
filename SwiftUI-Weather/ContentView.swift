@@ -83,13 +83,24 @@ struct BackgroundView: View {
 }
 
 struct CityTextView: View {
-    var cityName: String
+    
+    @EnvironmentObject var locationViewModel: LocationViewModel
     
     var body: some View {
-        Text(cityName)
+        Text(getLocationCityAndState())
             .font(.system(size: 32, weight: .medium, design: .default))
             .foregroundColor(.white)
+            .multilineTextAlignment(.center)
             .padding()
+    }
+    
+    func getLocationCityAndState() -> String {
+        guard let placemark = locationViewModel.currentPlacemark else {
+            return ""
+        }
+        let state = placemark.administrativeArea ?? ""
+        let city = placemark.locality ?? ""
+        return city + ", " + state
     }
 }
 
@@ -162,7 +173,7 @@ struct WeatherView: View {
     var body: some View {
         if network.dailyData != nil {
             VStack {
-                CityTextView(cityName: locationViewModel.currentPlacemark?.administrativeArea ?? "")
+                CityTextView()
                 
                 MainWeatherStatusView(imageName: isNight ? "moon.stars.fill" : "cloud.sun.fill",
                                       temperature: network.dailyData!.daily.temperature_2m_max.first!)
@@ -190,10 +201,14 @@ struct WeatherView: View {
         } else {
             ProgressView()
                 .onAppear() {
-                    network.getTemperature(latitude: locationViewModel.lastSeenLocation?.coordinate.latitude ?? 0,
-                                           longitude: locationViewModel.lastSeenLocation?.coordinate.longitude ?? 0)
+                    locationViewModel.registerLocationChangeListener(callback: { updateForecast() })
                 }
         }
+    }
+    
+    func updateForecast() -> Void {
+        network.getTemperature(latitude: locationViewModel.lastSeenLocation?.coordinate.latitude ?? 0,
+                               longitude: locationViewModel.lastSeenLocation?.coordinate.longitude ?? 0)
     }
     
     func getWeekDay(offset: Int) -> String {
